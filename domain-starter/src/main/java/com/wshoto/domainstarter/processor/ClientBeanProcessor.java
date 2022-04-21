@@ -19,6 +19,7 @@ public class ClientBeanProcessor extends InstantiationAwareBeanPostProcessorAdap
         this.beanFactory = (ConfigurableListableBeanFactory) beanFactory;
         // 通过主动调用beanFactory#getBean来显示实例化目标bean
         DomainProperties domainProperties = this.beanFactory.getBean(DomainProperties.class);
+        domainProperties.initDomainMap();
         System.out.println(domainProperties);
     }
 }

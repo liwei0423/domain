@@ -37,6 +37,9 @@ public class ApiController {
     @Resource
     private IUserService userService;
 
+    @Resource
+    private DomainProperties domainProperties;
+
     @RequestMapping("/test")
     public String test(){
         System.out.println("domain qiweixin="+ DomainProperties.qyweixin);
@@ -56,6 +59,12 @@ public class ApiController {
     @RequestMapping("/test3")
     public String test3(){
         userService.test();
+        return "a="+wxService.getUrl();
+    }
+
+    @RequestMapping("/test4")
+    public String test4(){
+        domainProperties.toString();
         return "a="+wxService.getUrl();
     }
 }
