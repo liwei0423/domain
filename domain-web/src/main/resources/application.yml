@@ -1,2 +1,7 @@
 domain:
   qyweixin: liwei123
+dns:
+  resolve:
+    zk:
+      baidu.com: 1.15.174.78
+

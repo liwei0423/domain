@@ -6,12 +6,17 @@ import com.wshoto.domainweb.constant.QwApiPathConst;
 import com.wshoto.domainweb.properties.UrlProperties;
 import com.wshoto.domainweb.service.IUserService;
 import com.wshoto.domainweixin.service.WxService;
+import com.wshoto.javahost.core.JavaHost;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 
 @RestController
 public class ApiController {
@@ -66,5 +71,21 @@ public class ApiController {
     public String test4(){
         domainProperties.toString();
         return "a="+wxService.getUrl();
+    }
+
+    @RequestMapping("/test5")
+    public void test5(){
+        String url = "http://www.baidu.com";
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            System.out.println(response.body().string());
+            JavaHost.printAllVirtualDns();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
