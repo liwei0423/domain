@@ -75,7 +75,7 @@ public class ApiController {
 
     @RequestMapping("/test5")
     public void test5(){
-        String url = "http://www.baidu.com";
+        String url = "http://www.lenovomm.com/test6";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url(url)
@@ -87,5 +87,10 @@ public class ApiController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @RequestMapping("/test6")
+    public String test6(){
+        return "0423111223aabbc";
     }
 }
